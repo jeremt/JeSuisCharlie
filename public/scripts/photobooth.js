@@ -1,5 +1,5 @@
 
-function Photobooth() {
+function Photobooth(onInit) {
     this.video = document.querySelector('video');
     this.canvas = document.querySelector("canvas");
     this.context = this.canvas.getContext("2d");
@@ -54,6 +54,8 @@ function Photobooth() {
                 maxAspectRatio: 1
             }
         }}, function (stream) {
+
+            onInit();
 
             // set video source from webcam and play video
             if (_this.video.mozSrcObject !== undefined) {

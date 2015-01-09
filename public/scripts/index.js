@@ -1,5 +1,7 @@
 
-var photobooth = new Photobooth();
+var photobooth = new Photobooth(function () {
+    document.getElementById("box").style.display = "inline-block";
+});
 var snapshotBtn = document.getElementById("snapshotBtn");
 
 snapshotBtn.addEventListener("click", function () {
