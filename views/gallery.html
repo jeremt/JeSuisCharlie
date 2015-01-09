@@ -14,7 +14,7 @@
         <div id="cards">
             <% for(var i = currentId; i >= 0 && i > currentId - 9; --i) { %>
             <a href="/snapshot/<%= i %>" id="<%= i %>" class="card">
-                <img width="256" height="256" src="/images/<%= i %>.png">
+                <img width="256" src="/images/<%= i %>.png">
             </a>
             <% } %>
         </div>

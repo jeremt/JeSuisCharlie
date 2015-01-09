@@ -10,13 +10,17 @@ function Photobooth() {
 
         if (_this.video.videoWidth > 0 && _this.video.videoHeight > 0) {
             // Resize the canvas to match video size
-            if (_this.canvas.width != _this.video.videoWidth)   _this.canvas.width = _this.video.videoWidth;
-            if (_this.canvas.height != _this.video.videoHeight) _this.canvas.height = _this.video.videoHeight;
+            if (_this.canvas.width != _this.video.videoWidth)
+                _this.canvas.width = Math.min(_this.video.videoWidth, _this.video.videoHeight);
+            if (_this.canvas.height != _this.video.videoHeight)
+                _this.canvas.height = Math.min(_this.video.videoWidth, _this.video.videoHeight);
 
             _this.context.save();
                 _this.context.translate(_this.canvas.width, 0);
                 _this.context.scale(-1, 1);
-                _this.context.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
+                _this.context.drawImage(
+                    _this.video, 0, 0, _this.canvas.width, _this.canvas.height,
+                    0, 0, _this.canvas.width, _this.canvas.height);
             _this.context.restore();
 
             _this.context.save();
