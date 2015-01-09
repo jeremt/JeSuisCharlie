@@ -8,7 +8,7 @@ var shareInfo = {
     url: 'http://www.jesuischarlie.photo',
     title: 'JeSuisCharlie',
     summary: 'TODO',
-    tweet: 'TODO #JeSuisCharlie'
+    tweet: 'TODO'
 };
 
 
@@ -43,7 +43,7 @@ app.get("/snapshot/:currentId", function (request, response) {
         response.render('snapshot.html', {
             currentId: request.params.currentId,
             share: shareInfo,
-            imageUrl: 'http://jesuischarlie.photo/images/' + request.params.currentId + '.png'
+            imageUrl: 'http://www.jesuischarlie.photo/images/' + request.params.currentId + '.png'
         });
     }
 });

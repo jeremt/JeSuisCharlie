@@ -3,6 +3,11 @@
 <head>
     <title>JeSuisCharlie</title>
     <link rel="stylesheet" href="/styles/index.css">
+    <meta property="og:image" content="<%= imageUrl %>" />
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:title" content="JeSuisCharlie" />
+    <meta name="twitter:image" content="<%= imageUrl %>" />
+    <meta name="twitter:url" content="http://www.jesuischarlie.photo" />
 </head>
 <body>
     <h1>#JESUISCHARLIE</h1>
@@ -15,7 +20,7 @@
         <div>
             <a href="/">Take another picture</a><br>
             <a target="popup"
-               onclick="window.open('http://twitter.com/share?text=<%= share.tweet %> - <%= imageUrl %>&url=<%= share.url%>', '_blank', 'modal=yes,width=600,height=400')">
+               onclick="window.open('http://twitter.com/share?text=<%= share.tweet %>%20-%20<%= imageUrl %>&url=<%= share.url%>&hashtags=JeSuisCharlie', '_blank', 'modal=yes,width=600,height=400')">
                 Share on twitter
             </a><br>
             <a target="popup"
