@@ -17,7 +17,9 @@ retryBtn.addEventListener("click", function () {
 });
 
 facebookBtn.addEventListener("click", function () {
-    console.log("Use as facebook avatar...");
+    FB.login(function(){
+        console.log("TODO");
+    }, {scope: 'publish_actions'});
 });
 
 galleryBtn.addEventListener("click", function () {

@@ -14,11 +14,19 @@ function Photobooth() {
             if (_this.canvas.height != _this.video.videoHeight) _this.canvas.height = _this.video.videoHeight;
 
             _this.context.save();
-            _this.context.translate(_this.canvas.width, 0);
-            _this.context.scale(-1, 1);
-            _this.context.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
+                _this.context.translate(_this.canvas.width, 0);
+                _this.context.scale(-1, 1);
+                _this.context.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
             _this.context.restore();
-            _this.context.drawImage(document.getElementById("panel"), 0, 248, 640, 468/2);
+
+            _this.context.save();
+                _this.context.font = '96px block_bertholdregular';
+                _this.context.textAlign = 'center';
+                _this.context.fillStyle = 'white';
+                _this.context.shadowBlur = 10;
+                _this.context.shadowColor = 'black';
+                _this.context.fillText("#JESUISCHARLIE", _this.canvas.width / 2, 450);
+            _this.context.restore();
 
             // Draw the image to the screen.
             if (_this.canvas.width > 0 && _this.canvas.height > 0) {

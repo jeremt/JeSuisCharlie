@@ -1,9 +1,13 @@
 
 @import url("fonts.css");
 
+body {
+    background: #222222;
+}
+
 h1 {
     font-size: 5em;
-    color: #222;
+    color: #cccccc;
     text-align: center;
     font-family: 'block_bertholdregular', sans-serif;
     margin: 0;
@@ -13,6 +17,12 @@ h1 {
     width: 640px;
     padding: 20px;
     background: #222;
+    margin: auto;
+}
+
+footer {
+    width: 640px;
+    padding: 20px;
     margin: auto;
 }
 
