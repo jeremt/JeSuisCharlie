@@ -14,8 +14,14 @@
         <img src="/images/<%= currentId %>.png">
         <div>
             <a href="/">Take another picture</a><br>
-            <a href="http://twitter.com/share?text=<%= share.tweet %> - <%= imageUrl %>&url=<%= share.url%>">Share on twitter</a><br>
-            <a href="http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>">Share on facebook</a>
+            <a target="popup"
+               href="http://twitter.com/share?text=<%= share.tweet %> - <%= imageUrl %>&url=<%= share.url%>">
+                Share on twitter
+            </a><br>
+            <a target="popup"
+               href="http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>">
+                Share on facebook
+            </a>
         </div>
     </div>
     <footer>
