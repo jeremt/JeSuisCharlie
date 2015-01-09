@@ -1,5 +1,5 @@
 var express = require('express');
-var fs = require("fs");
+var fs = require('fs');
 var ejs = require('ejs');
 var app = express();
 
@@ -11,8 +11,21 @@ if(!fs.existsSync("public/images")){
         }
     });
 }
-
 var currentId = fs.readdirSync('public/images').length - 1;
+
+var fbgraph = require('fbgraphapi');
+
+//app.use(require('cookie-parser'));
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(fbgraph.auth( {
+    appId : "1565904010321277",
+    appSecret : "766999f763d28f5b471d9b1edb7453b6",
+    redirectUri : "http://noussommescharlie.herokuapp.com"
+}));
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
@@ -46,6 +59,23 @@ app.post('/upload', function (request, response) {
             response.send({currentId: currentId});
         }
     });
+});
+
+app.get('/login', function(req, res) {
+    console.log('Start login');
+    fbgraph.redirectLoginForm(req, res);
+});
+
+app.get('/changeprofile', function(req, res) {
+    if (!req.hasOwnProperty('facebook')) {
+        console.log('You are not logged in');
+        return res.redirect('/login');
+    }
+    req.facebook.graph('/me', function(err, me) {
+        console.log(me);
+    });
+
+    res.end("Check console output");
 });
 
 app.listen(app.get('port'), function() {
