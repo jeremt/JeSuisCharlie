@@ -65,8 +65,8 @@ function Photobooth() {
     }
 }
 
-Photobooth.prototype.takeSnapshot = function(img) {
-    img.src = this.canvas.toDataURL();
+Photobooth.prototype.getDataUrl = function() {
+    return this.canvas.toDataURL();
 };
 
 Photobooth.prototype.addFilter = function(filter) {

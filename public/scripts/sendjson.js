@@ -7,6 +7,8 @@ function sendJson(route, data, callback) {
     // send the collected data as JSON
     xhr.send(JSON.stringify(data));
 
-    xhr.onloadend = callback;
+    xhr.onloadend = function () {
+        callback(JSON.parse(xhr.responseText));
+    };
 
 }

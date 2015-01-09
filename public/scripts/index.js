@@ -1,42 +1,10 @@
 
 var photobooth = new Photobooth();
 var snapshotBtn = document.getElementById("snapshotBtn");
-var retryBtn = document.getElementById("retryBtn");
-var facebookBtn = document.getElementById("facebookBtn");
-var uploadBtn = document.getElementById("uploadBtn");
-
-function changeProfilePicture() {
-    FB.api('/me/feed', 'post', {message: '#jeSuisCharlie'});
-}
 
 snapshotBtn.addEventListener("click", function () {
-    document.querySelector("#photobooth").style.display = 'none';
-    document.querySelector("#snapshot").style.display = 'block';
-    photobooth.takeSnapshot(document.querySelector("#snapshot img"));
-});
-
-retryBtn.addEventListener("click", function () {
-    document.querySelector("#photobooth").style.display = 'block';
-    document.querySelector("#snapshot").style.display = 'none';
-});
-
-facebookBtn.addEventListener("click", function () {
-    //FB.login(function(){
-    //    console.log("TODO");
-    //}, {scope: 'publish_actions'});
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-            changeProfilePicture();
-        }
-        else {
-            FB.login(changeProfilePicture);
-        }
-    });
-});
-
-uploadBtn.addEventListener("click", function () {
-    sendJson("/upload", {imageData: document.querySelector("#snapshot img").src}, function () {
-        window.location.href = "/gallery";
+    sendJson("/upload", {imageData: photobooth.getDataUrl()}, function (data) {
+        window.location.href = "/snapshot/" + data.currentId;
     });
 });
 

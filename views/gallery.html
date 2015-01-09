@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>JeSuisCharlie</title>
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
     <h1>#JESUISCHARLIE</h1>
@@ -14,7 +14,7 @@
         <div id="cards">
             <% for(var i = currentId; i >= 0 && i > currentId - 9; --i) { %>
             <div id="<%= i %>" class="card">
-                <img width="256" height="256" src="images/<%= i %>.png">
+                <img width="256" height="256" src="/images/<%= i %>.png">
             </div>
             <% } %>
         </div>
@@ -28,7 +28,7 @@
                 data-show-faces="true">
         </div>
     </footer>
-    <script src="scripts/fbsdk.js"></script>
-    <script src="scripts/gallery.js"></script>
+    <script src="/scripts/fbsdk.js"></script>
+    <script src="/scripts/gallery.js"></script>
 </body>
 </html>

@@ -28,6 +28,10 @@ app.get('/gallery', function(request, response) {
     response.render('gallery.html', {currentId: currentId});
 });
 
+app.get("/snapshot/:currentId", function (request, response) {
+    response.render('snapshot.html', {currentId: request.params.currentId});
+});
+
 app.post('/upload', function (request, response) {
     var base64Data = request.body.imageData.replace(/^data:image\/png;base64,/, "");
     fs.writeFile("public/images/" + ++currentId + ".png", base64Data, 'base64', function(err) {
@@ -35,7 +39,7 @@ app.post('/upload', function (request, response) {
             console.log(err);
         }
         else {
-            response.redirect("/gallery");
+            response.send({currentId: currentId});
         }
     });
 });
