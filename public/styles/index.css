@@ -1,7 +1,21 @@
 
 @import url("fonts.css");
 
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 body {
+    -webkit-animation: appear .5s;
+    animation: appear .5s;
     background: #333;
 }
 
@@ -87,6 +101,9 @@ a:hover, button:hover {
 
 nav a {
     padding: 5px 20px;
+}
+
+#moreBtn, nav a {
     color: #ccc;
 }
 
@@ -94,6 +111,6 @@ nav a.active {
     color: white;
 }
 
-nav a:hover {
+#moreBtn:hover, nav a:hover {
     color: white;
 }

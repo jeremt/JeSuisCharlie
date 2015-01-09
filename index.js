@@ -1,5 +1,6 @@
 var express = require('express');
 var fs = require("fs");
+var ejs = require('ejs');
 var app = express();
 
 if(!fs.existsSync("public/images")){
@@ -11,11 +12,11 @@ if(!fs.existsSync("public/images")){
     });
 }
 
-var currentId = fs.readdirSync('public/images').length;
+var currentId = fs.readdirSync('public/images').length - 2; // remove zero and last
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+app.engine('html', ejs.renderFile);
 app.use(express.static(__dirname + '/public'));
 app.use(require('body-parser').json({limit: '50mb'}));
 
@@ -29,7 +30,7 @@ app.get('/gallery', function(request, response) {
 
 app.post('/upload', function (request, response) {
     var base64Data = request.body.imageData.replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("public/images/" + currentId++ + ".png", base64Data, 'base64', function(err) {
+    fs.writeFile("public/images/" + ++currentId + ".png", base64Data, 'base64', function(err) {
         if (err) {
             console.log(err);
         }
