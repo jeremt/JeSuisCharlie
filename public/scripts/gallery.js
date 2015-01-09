@@ -12,6 +12,7 @@ moreBtn.addEventListener("click", function () {
         img.width = 256;
         img.height = 256;
         card.className = "card";
+        card.id = i.toString();
         card.appendChild(img);
         cardsContainer.appendChild(card);
     }
