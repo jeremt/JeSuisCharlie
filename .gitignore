@@ -1,4 +1,8 @@
-node_modules
-bower_components
-public/images
+./node_modules
+./bower_components
+./public/images
 .idea
+.bash_history
+.bash_profile
+.npm/
+.viminfo
