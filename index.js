@@ -61,7 +61,7 @@ app.get("/snapshot/:currentId", function (request, response) {
 
 app.post('/upload', function (request, response) {
     var base64Data = request.body.imageData.replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("public/images/" + ++currentId + ".png", base64Data, 'base64', function(err) {
+    fs.writeFile(imageFolder + "/" + ++currentId + ".png", base64Data, 'base64', function(err) {
         if (err) {
             console.log(err);
         }
