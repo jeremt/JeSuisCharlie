@@ -1,6 +1,17 @@
 var express = require('express');
+var fs = require("fs");
 var app = express();
-var currentId = require('fs').readdirSync('public/images').length;
+
+if(!fs.existsSync("public/images")){
+    fs.mkdirSync("public/images", 0766, function(err){
+        if(err){
+            console.log(err);
+            response.send("ERROR! Can't make the images directory! \n");
+        }
+    });
+}
+
+var currentId = fs.readdirSync('public/images').length;
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
@@ -18,7 +29,7 @@ app.get('/gallery', function(request, response) {
 
 app.post('/upload', function (request, response) {
     var base64Data = request.body.imageData.replace(/^data:image\/png;base64,/, "");
-    require("fs").writeFile("public/images/" + currentId++ + ".png", base64Data, 'base64', function(err) {
+    fs.writeFile("public/images/" + currentId++ + ".png", base64Data, 'base64', function(err) {
         if (err) {
             console.log(err);
         }
