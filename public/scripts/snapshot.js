@@ -6,7 +6,7 @@ retryBtn.addEventListener("click", function () {
 });
 
 facebookBtn.addEventListener("click", function () {
-    window.alert("Not implemented yet, sorry :/")
+    //window.alert("Not implemented yet, sorry :/")
     sendJson("/post", {}, function (data) {
         console.log(data);
     });
