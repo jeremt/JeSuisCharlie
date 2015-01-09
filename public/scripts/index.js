@@ -5,6 +5,10 @@ var retryBtn = document.getElementById("retryBtn");
 var facebookBtn = document.getElementById("facebookBtn");
 var uploadBtn = document.getElementById("uploadBtn");
 
+function changeProfilePicture() {
+    FB.api('/me/feed', 'post', {message: '#jeSuisCharlie'});
+}
+
 snapshotBtn.addEventListener("click", function () {
     document.querySelector("#photobooth").style.display = 'none';
     document.querySelector("#snapshot").style.display = 'block';
@@ -17,9 +21,17 @@ retryBtn.addEventListener("click", function () {
 });
 
 facebookBtn.addEventListener("click", function () {
-    FB.login(function(){
-        console.log("TODO");
-    }, {scope: 'publish_actions'});
+    //FB.login(function(){
+    //    console.log("TODO");
+    //}, {scope: 'publish_actions'});
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            changeProfilePicture();
+        }
+        else {
+            FB.login(changeProfilePicture);
+        }
+    });
 });
 
 uploadBtn.addEventListener("click", function () {
