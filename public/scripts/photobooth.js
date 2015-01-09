@@ -20,9 +20,9 @@ function Photobooth() {
             _this.context.restore();
 
             _this.context.save();
-                _this.context.font = '96px block_bertholdregular';
+                _this.context.font = '80px block_bertholdregular';
                 _this.context.textAlign = 'center';
-                _this.context.fillStyle = 'white';
+                _this.context.fillStyle = '#fff';
                 _this.context.shadowBlur = 10;
                 _this.context.shadowColor = 'black';
                 _this.context.fillText("#JESUISCHARLIE", _this.canvas.width / 2, 450);
@@ -42,7 +42,12 @@ function Photobooth() {
     };
 
     if (navigator.getUserMedia) {
-        navigator.getUserMedia({video: true}, function (stream) {
+        navigator.getUserMedia({video: {
+            mandatory: {
+                maxWidth: 512,
+                maxHeight: 512
+            }
+        }}, function (stream) {
 
             // set video source from webcam and play video
             if (_this.video.mozSrcObject !== undefined) {

@@ -3,7 +3,7 @@ var photobooth = new Photobooth();
 var snapshotBtn = document.getElementById("snapshotBtn");
 var retryBtn = document.getElementById("retryBtn");
 var facebookBtn = document.getElementById("facebookBtn");
-var galleryBtn = document.getElementById("galleryBtn");
+var uploadBtn = document.getElementById("uploadBtn");
 
 snapshotBtn.addEventListener("click", function () {
     document.querySelector("#photobooth").style.display = 'none';
@@ -22,8 +22,10 @@ facebookBtn.addEventListener("click", function () {
     }, {scope: 'publish_actions'});
 });
 
-galleryBtn.addEventListener("click", function () {
-    console.log("Upload to gallery");
+uploadBtn.addEventListener("click", function () {
+    sendJson("/upload", {imageData: document.querySelector("#snapshot img").src}, function () {
+        window.location.href = "/gallery";
+    });
 });
 
 photobooth.addFilter(function (pixels) {

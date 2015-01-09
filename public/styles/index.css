@@ -2,44 +2,98 @@
 @import url("fonts.css");
 
 body {
-    background: #222222;
+    background: #333;
 }
 
 h1 {
     font-size: 5em;
-    color: #cccccc;
+    color: white;
+    text-shadow: 0 2px 10px black;
     text-align: center;
     font-family: 'block_bertholdregular', sans-serif;
     margin: 0;
 }
 
-#box {
-    width: 640px;
-    padding: 20px;
-    background: #222;
+nav {
     margin: auto;
+    text-align: center;
+}
+
+#gallery {
+    text-align: center;
+}
+
+#box, .card {
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 20px black;
+}
+
+.card {
+    padding: 10px;
+    width: 256px;
+    display: inline-block;
+    margin: 0 20px 20px 0;
+}
+
+#box {
+    padding: 20px;
+    width: 512px;
+    margin: auto;
+    text-align: center;
+}
+
+canvas {
+    border-radius: 5px;
 }
 
 footer {
-    width: 640px;
     padding: 20px;
+    text-align: center;
     margin: auto;
 }
 
-button {
+a, button {
+    text-decoration: none;
+    display: inline-block;
     font-family: 'block_bertholdregular', sans-serif;
-    color: #cccccc;
+    color: #666;
     background: none;
     padding: 5px;
-    text-align: center;
-    width: 100%;
     border: none;
     text-transform: uppercase;
     font-size: 3em;
     cursor: pointer;
     outline: none;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
 }
 
-button:hover {
-    color: #ffffff;
+a:hover, button:hover {
+    color: #222;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#box button {
+    text-align: center;
+    width: 100%;
+}
+
+nav a {
+    padding: 5px 20px;
+    color: #ccc;
+}
+
+nav a.active {
+    color: white;
+}
+
+nav a:hover {
+    color: white;
 }

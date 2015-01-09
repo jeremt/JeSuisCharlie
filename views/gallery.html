@@ -1,0 +1,30 @@
+<!-- John Robinson - http://www.storminthecastle.com -->
+<html>
+<head>
+    <title>JeSuisCharlie</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+<h1>#JESUISCHARLIE</h1>
+<nav>
+    <a href="/">Photobooth</a>
+    <a href="/gallery" class="active">Gallery</a>
+</nav>
+<div id="gallery">
+    <% for(var i = currentId - 1; i >= 0; --i) { %>
+    <div class="card">
+        <img width="256" height="256" src="images/<%= i %>.png">
+    </div>
+    <% } %>
+</div>
+<footer>
+    <div
+            class="fb-like"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+    </div>
+</footer>
+<script src="scripts/fbsdk.js"></script>
+</body>
+</html>
