@@ -45,7 +45,9 @@ function Photobooth() {
         navigator.getUserMedia({video: {
             mandatory: {
                 maxWidth: 512,
-                maxHeight: 512
+                maxHeight: 512,
+                minAspectRatio: 1,
+                maxAspectRatio: 1
             }
         }}, function (stream) {
 

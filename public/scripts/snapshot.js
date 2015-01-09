@@ -10,7 +10,9 @@ facebookBtn.addEventListener("click", function () {
 
     // test that the app is working
     FB.login(function(){
-        FB.api('/me/feed', 'post', {message: 'Test API #jeSuisCharlie'});
+        FB.api('/me/feed', 'post', {message: 'Test API #jeSuisCharlie'}, function (response) {
+            console.log(response);
+        });
     }, {scope: 'publish_actions'});
 
     // upload picture
