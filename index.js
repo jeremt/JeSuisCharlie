@@ -3,22 +3,6 @@ var fs = require('fs');
 var ejs = require('ejs');
 var app = express();
 var imageFolder = __dirname + "/public/images";
-//var oauth = require('./oauth');
-//var api = require('./facebook');
-//app.get('/login', oauth.login);
-//app.get('/callback', oauth.callback);
-//app.post('/post', function(req, res) {
-//    // Check to ensure user has a valid access_token
-//    if (oauth.access_token) {
-//
-//        // Call function that contains API call to post on Facebook (see facebook.js)
-//        api.postMessage(oauth.access_token, "Test API #JeSuisCharlie", res);
-//
-//    } else {
-//        console.log("Couldn't confirm that user was authenticated. Redirecting to /");
-//        res.redirect('/');
-//    }
-//});
 
 if(!fs.existsSync(imageFolder)){
     fs.mkdirSync(imageFolder, 0766, function(err){
@@ -29,13 +13,6 @@ if(!fs.existsSync(imageFolder)){
     });
 }
 var currentId = fs.readdirSync(imageFolder).length - 1;
-
-////app.use(require('cookie-parser'));
-//app.use(require('express-session')({
-//    secret: 'keyboard cat',
-//    resave: false,
-//    saveUninitialized: true
-//}));
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
@@ -61,7 +38,7 @@ app.get("/snapshot/:currentId", function (request, response) {
 
 app.post('/upload', function (request, response) {
     var base64Data = request.body.imageData.replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("public/images/" + ++currentId + ".png", base64Data, 'base64', function(err) {
+    fs.writeFile(imageFolder + "/" + ++currentId + ".png", base64Data, 'base64', function(err) {
         if (err) {
             console.log(err);
         }
@@ -70,23 +47,6 @@ app.post('/upload', function (request, response) {
         }
     });
 });
-
-//app.get('/login', function(req, res) {
-//    console.log('Start login');
-//    fbgraph.redirectLoginForm(req, res);
-//});
-//
-//app.get('/changeprofile', function(req, res) {
-//    if (!req.hasOwnProperty('facebook')) {
-//        console.log('You are not logged in');
-//        return res.redirect('/login');
-//    }
-//    req.facebook.graph('/me', function(err, me) {
-//        console.log(me);
-//    });
-//
-//    res.end("Check console output");
-//});
 
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'));
