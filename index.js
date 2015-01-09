@@ -7,7 +7,7 @@ var imageFolder = __dirname + "/public/images";
 var shareInfo = {
     url: 'http://www.jesuischarlie.photo',
     title: 'JeSuisCharlie',
-    summary: fs.readFileSync(__dirname + '/description.txt').toString(),
+    summary: fs.readFileSync(__dirname + '/description.txt').toString().replace(/\n/g, "\\n"),
     tweet: 'TODO'
 };
 
