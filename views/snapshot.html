@@ -15,11 +15,11 @@
         <div>
             <a href="/">Take another picture</a><br>
             <a target="popup"
-               href="http://twitter.com/share?text=<%= share.tweet %> - <%= imageUrl %>&url=<%= share.url%>">
+               onclick="window.open('http://twitter.com/share?text=<%= share.tweet %> - <%= imageUrl %>&url=<%= share.url%>', '_blank', 'modal=yes,width=600,height=400')">
                 Share on twitter
             </a><br>
             <a target="popup"
-               href="http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>">
+               onclick="window.open('http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>', '_blank', 'modal=yes,width=600,height=400')">
                 Share on facebook
             </a>
         </div>
