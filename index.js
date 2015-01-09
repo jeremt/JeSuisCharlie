@@ -2,6 +2,22 @@ var express = require('express');
 var fs = require('fs');
 var ejs = require('ejs');
 var app = express();
+var oauth = require('./oauth');
+var api = require('./facebook');
+app.get('/login', oauth.login);
+app.get('/callback', oauth.callback);
+app.post('/post', function(req, res) {
+    // Check to ensure user has a valid access_token
+    if (oauth.access_token) {
+
+        // Call function that contains API call to post on Facebook (see facebook.js)
+        api.postMessage(oauth.access_token, "Test API #JeSuisCharlie", res);
+
+    } else {
+        console.log("Couldn't confirm that user was authenticated. Redirecting to /");
+        res.redirect('/');
+    }
+});
 
 if(!fs.existsSync("public/images")){
     fs.mkdirSync("public/images", 0766, function(err){
