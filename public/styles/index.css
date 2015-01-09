@@ -16,7 +16,7 @@ h1 {
     margin: auto;
 }
 
-#snapshotBtn {
+button {
     font-family: 'block_bertholdregular', sans-serif;
     color: #cccccc;
     background: none;
@@ -30,6 +30,6 @@ h1 {
     outline: none;
 }
 
-#snapshotBtn:hover {
+button:hover {
     color: #ffffff;
 }

@@ -11,9 +11,17 @@
         <div id="photobooth">
             <video width="512" height="512" style="display:none;"></video>
             <canvas></canvas>
+            <button id="snapshotBtn">Take a picture</button>
         </div>
-        <button id="snapshotBtn">Snapshot</button>
-        <div><img src="" id="snapshot"></div>
+        <div id="snapshot" style="display: none">
+            <img src="">
+            <button id="retryBtn">Retry</button>
+            <button id="galleryBtn">Upload to gallery</button>
+            <button id="facebookBtn">Use on facebook</button>
+        </div>
+        <div id="galery" style="display: none">
+            TODO
+        </div>
     </div>
     <script src="scripts/photobooth.js"></script>
     <script src="scripts/prefixes.js"></script>

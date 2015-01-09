@@ -13,7 +13,11 @@ function Photobooth() {
             if (_this.canvas.width != _this.video.videoWidth)   _this.canvas.width = _this.video.videoWidth;
             if (_this.canvas.height != _this.video.videoHeight) _this.canvas.height = _this.video.videoHeight;
 
+            _this.context.save();
+            _this.context.translate(_this.canvas.width, 0);
+            _this.context.scale(-1, 1);
             _this.context.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
+            _this.context.restore();
             _this.context.drawImage(document.getElementById("panel"), 0, 248, 640, 468/2);
 
             // Draw the image to the screen.
@@ -48,8 +52,8 @@ function Photobooth() {
     }
 }
 
-Photobooth.prototype.takeSnapshot = function() {
-    document.querySelector("#snapshot").src = this.canvas.toDataURL();
+Photobooth.prototype.takeSnapshot = function(img) {
+    img.src = this.canvas.toDataURL();
 };
 
 Photobooth.prototype.addFilter = function(filter) {

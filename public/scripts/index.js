@@ -1,9 +1,27 @@
 
 var photobooth = new Photobooth();
 var snapshotBtn = document.getElementById("snapshotBtn");
+var retryBtn = document.getElementById("retryBtn");
+var facebookBtn = document.getElementById("facebookBtn");
+var galleryBtn = document.getElementById("galleryBtn");
 
 snapshotBtn.addEventListener("click", function () {
-    photobooth.takeSnapshot();
+    document.querySelector("#photobooth").style.display = 'none';
+    document.querySelector("#snapshot").style.display = 'block';
+    photobooth.takeSnapshot(document.querySelector("#snapshot img"));
+});
+
+retryBtn.addEventListener("click", function () {
+    document.querySelector("#photobooth").style.display = 'block';
+    document.querySelector("#snapshot").style.display = 'none';
+});
+
+facebookBtn.addEventListener("click", function () {
+    console.log("Use as facebook avatar...");
+});
+
+galleryBtn.addEventListener("click", function () {
+    console.log("Upload to gallery");
 });
 
 photobooth.addFilter(function (pixels) {
