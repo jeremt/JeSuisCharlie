@@ -21,12 +21,13 @@
             <a href="/">Take another picture</a><br>
             <a target="popup"
                onclick="window.open('http://twitter.com/share?text=<%= share.tweet %>%20-%20<%= imageUrl %>&url=<%= share.url%>&hashtags=JeSuisCharlie', '_blank', 'modal=yes,width=600,height=400')">
-                Share on twitter
+                Share on Twitter
             </a><br>
-            <a target="popup"
-               onclick="window.open('http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>', '_blank', 'modal=yes,width=600,height=400')">
-                Share on facebook
-            </a>
+            <a id="facebookBtn">Share on Facebook</a>
+            <!--<a target="popup"-->
+               <!--onclick="window.open('http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>', '_blank', 'modal=yes,width=600,height=400')">-->
+                <!--Share on facebook-->
+            <!--</a>-->
         </div>
     </div>
     <footer>
@@ -37,8 +38,46 @@
                 data-show-faces="true">
         </div>
     </footer>
+
+
+    <div id="fb-root"></div>
+
+    <!-- USE 'Asynchronous Loading' version, for IE8 to work
+    http://developers.facebook.com/docs/reference/javascript/FB.init/ -->
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId  : '1565904010321277',
+                status : true, // check login status
+                cookie : true, // enable cookies to allow the server to access the session
+                xfbml  : true  // parse XFBML
+            });
+        };
+
+        (function() {
+            var e = document.createElement('script');
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            e.async = true;
+            document.getElementById('fb-root').appendChild(e);
+        }());
+    </script>
+
     <script src="/scripts/sendjson.js"></script>
-    <script src="/scripts/snapshot.js"></script>
+    <script>
+        document.querySelector("#facebookBtn").addEventListener("click", function () {
+            FB.ui({
+                method: 'feed',
+                name: '<%= share.title %>',
+                link: '<%= share.url %>',
+                picture: '<%= imageUrl %>',
+                caption: '<%= share.summary %>',
+                description: '',
+                message: ''
+            });
+        });
+
+    </script>
     <script src="/scripts/ga.js"></script>
 </body>
 </html>
