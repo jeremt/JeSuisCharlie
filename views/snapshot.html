@@ -13,8 +13,9 @@
     <div id="box">
         <img src="/images/<%= currentId %>.png">
         <div>
-            <a href="/" id="retryBtn">Take another picture</a><br>
-            <a id="facebookBtn">Use on facebook</a>
+            <a href="/">Take another picture</a><br>
+            <a href="http://twitter.com/share?text=<%= share.tweet %>%20http://www.jesuischarlie.photo/images/<%= currentId %>.png&url=<%= share.url%>">Share on twitter</a><br>
+            <a href="http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=http://www.jesuischarlie.photo/images/<%= currentId %>.png">Share on facebook</a>
         </div>
     </div>
     <footer>

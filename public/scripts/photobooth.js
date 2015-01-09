@@ -24,7 +24,7 @@ function Photobooth(onInit) {
             _this.context.restore();
 
             _this.context.save();
-                _this.context.font = '80px block_bertholdregular';
+                _this.context.font = '70px block_bertholdregular';
                 _this.context.textAlign = 'center';
                 _this.context.fillStyle = '#fff';
                 _this.context.shadowBlur = 10;
