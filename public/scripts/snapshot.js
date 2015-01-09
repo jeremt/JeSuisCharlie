@@ -7,7 +7,9 @@ retryBtn.addEventListener("click", function () {
 
 facebookBtn.addEventListener("click", function () {
     window.alert("Not implemented yet, sorry :/")
-
+    sendJson("/post", {}, function (data) {
+        console.log(data);
+    });
     // test that the app is working
     //FB.login(function(){
     //    FB.api('/me/feed', 'post', {message: 'Test API #jeSuisCharlie'}, function (response) {
