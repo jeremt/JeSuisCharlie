@@ -31,7 +31,9 @@ app.get('/gallery', function(request, response) {
 app.get("/snapshot/:currentId", function (request, response) {
     if (request.params.currentId > currentId + 1)
         response.redirect('/gallery');
-    response.render('snapshot.html', {currentId: request.params.currentId});
+    else {
+        response.render('snapshot.html', {currentId: request.params.currentId});
+    }
 });
 
 app.post('/upload', function (request, response) {
