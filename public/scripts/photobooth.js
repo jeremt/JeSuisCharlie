@@ -14,7 +14,7 @@ function Photobooth() {
             if (_this.canvas.height != _this.video.videoHeight) _this.canvas.height = _this.video.videoHeight;
 
             _this.context.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
-            _this.context.drawImage(document.getElementById("panel"), 160, 240, 320, 200);
+            _this.context.drawImage(document.getElementById("panel"), 0, 248, 640, 468/2);
 
             // Draw the image to the screen.
             if (_this.canvas.width > 0 && _this.canvas.height > 0) {
