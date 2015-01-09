@@ -24,11 +24,8 @@
                onclick="window.open('http://twitter.com/share?text=<%= share.tweet %>%20-%20<%= imageUrl %>&url=<%= share.url%>&hashtags=JeSuisCharlie', '_blank', 'modal=yes,width=600,height=400')">
                 Share on Twitter
             </a><br>
-            <a id="facebookBtn">Share on Facebook</a>
-            <!--<a target="popup"-->
-               <!--onclick="window.open('http://facebook.com/sharer.php?s=100&p[url]=<%= share.url %>&p[title]=<%= share.title %>&p[summary]=<%= share.summary %>&p[images][0]=<%= imageUrl %>', '_blank', 'modal=yes,width=600,height=400')">-->
-                <!--Share on facebook-->
-            <!--</a>-->
+            <a id="facebookBtn">Share on Facebook</a><br>
+            <a href="/images/<%= currentId %>.png">Download</a>
         </div>
     </div>
     <footer>
