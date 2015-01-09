@@ -12,7 +12,7 @@ if(!fs.existsSync("public/images")){
     });
 }
 
-var currentId = fs.readdirSync('public/images').length - 2; // remove zero and last
+var currentId = fs.readdirSync('public/images').length - 1;
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
