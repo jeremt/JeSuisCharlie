@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'block_bertholdregular';
+    src: url('../fonts/font-webfont.eot');
+    src: url('../fonts/font-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/font-webfont.woff2') format('woff2'),
+    url('../fonts/font-webfont.woff') format('woff'),
+    url('../fonts/font-webfont.ttf') format('truetype'),
+    url('../fonts/font-webfont.svg#block_bertholdregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
