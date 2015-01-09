@@ -40,7 +40,11 @@ app.get("/snapshot/:currentId", function (request, response) {
     if (request.params.currentId > currentId + 1)
         response.redirect('/gallery');
     else {
-        response.render('snapshot.html', {currentId: request.params.currentId, share: shareInfo});
+        response.render('snapshot.html', {
+            currentId: request.params.currentId,
+            share: shareInfo,
+            imageUrl: 'http://jesuischarlie.photo/images/' + request.params.currentId + '.png'
+        });
     }
 });
 
