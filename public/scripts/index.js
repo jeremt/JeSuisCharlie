@@ -5,8 +5,8 @@ var photobooth = new Photobooth(function () {
 var snapshotBtn = document.getElementById("snapshotBtn");
 
 snapshotBtn.addEventListener("click", function () {
-    sendJson("/upload", {imageData: photobooth.getDataUrl()}, function (data) {
-        window.location.href = "/snapshot/" + data.currentId;
+    sendJson("/image", {imageData: photobooth.getDataUrl()}, function (data) {
+        window.location.href = "/snapshot/" + data.filename;
     });
 });
 

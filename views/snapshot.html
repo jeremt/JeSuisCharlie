@@ -17,7 +17,7 @@
         <a href="/gallery">Gallery</a>
     </nav>
     <div id="box">
-        <img src="/images/<%= currentId %>.png">
+        <img src="<%= imageUrl %>">
         <div>
             <a href="/">Take another picture</a><br>
             <a target="popup"
@@ -25,7 +25,7 @@
                 Share on Twitter
             </a><br>
             <a id="facebookBtn">Share on Facebook</a><br>
-            <a href="/images/<%= currentId %>.png">Download</a>
+            <a href="<%= imageUrl %>">Download</a>
         </div>
     </div>
     <footer>
@@ -61,7 +61,6 @@
         }());
     </script>
 
-    <script src="/scripts/sendjson.js"></script>
     <script>
         document.querySelector("#facebookBtn").addEventListener("click", function () {
             FB.ui({

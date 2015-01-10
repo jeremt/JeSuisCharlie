@@ -12,16 +12,8 @@
         <a href="/gallery" class="active">Gallery</a>
     </nav>
     <div id="gallery">
-        <div id="cards">
-            <% for(var i = currentId; i >= 0 && i > currentId - 9; --i) { %>
-            <a href="/snapshot/<%= i %>" id="<%= i %>" class="card">
-                <img width="256" src="/images/<%= i %>.png">
-            </a>
-            <% } %>
-        </div>
-        <% if(currentId > 9) { %>
-        <button id="moreBtn">LOAD MORE...</button>
-        <% } %>
+        <div id="cards"></div>
+        <button id="moreBtn" style="display: none">LOAD MORE...</button>
     </div>
     <footer>
         <div
@@ -31,6 +23,7 @@
                 data-show-faces="true">
         </div>
     </footer>
+    <script src="/scripts/jsonxhr.js"></script>
     <script src="/scripts/gallery.js"></script>
     <script src="/scripts/ga.js"></script>
 </body>
