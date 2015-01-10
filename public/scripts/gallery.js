@@ -12,7 +12,7 @@ if (moreBtn) {
             img.src = "images/" + i + ".png";
             img.width = 256;
             img.height = 256;
-            card.href = "http://jesuischarlie.photo/snapshot/" + i + ".png";
+            card.href = "http://www.jesuischarlie.photo/snapshot/" + i;
             card.className = "card";
             card.id = i.toString();
             card.appendChild(img);
