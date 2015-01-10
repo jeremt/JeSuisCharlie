@@ -67,7 +67,7 @@ exports.removePhoto = function (connection, filename, callback) {
  * @param callback
  */
 exports.getPhotos = function (connection, from, to, callback) {
-    connection.all("SELECT * FROM photos WHERE id BETWEEN " + from + " AND " + to, callback);
+    connection.all("SELECT * FROM photos ORDER BY id DESC LIMIT " + to + " OFFSET " + from, callback);
 };
 
 /**

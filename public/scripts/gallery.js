@@ -1,7 +1,7 @@
 
 var cardsContainer = document.getElementById("cards");
 var moreBtn = document.getElementById("moreBtn");
-var currentId = 1;
+var currentId = 0;
 
 function addCard(filename) {
     var card = document.createElement("a");
@@ -17,7 +17,7 @@ function addCard(filename) {
 }
 
 function addCards() {
-    getJson("/images/" + currentId  + "/" + parseInt(currentId + 8), function (data) {
+    getJson("/images/" + currentId  + "/" + parseInt(currentId + 9), function (data) {
         for (var i = 0; i < data.length; ++i) {
             addCard(data[i].filename);
         }
