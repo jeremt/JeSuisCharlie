@@ -7,11 +7,12 @@ if (moreBtn) {
         var currentCards = document.getElementsByClassName("card");
         var currentId = currentCards[currentCards.length - 1].id - 1;
         for (var i = currentId; i >= 0 && i > currentId - 9; --i) {
-            var card = document.createElement("div");
+            var card = document.createElement("a");
             var img = document.createElement("img");
             img.src = "images/" + i + ".png";
             img.width = 256;
             img.height = 256;
+            card.href = "http://jesuischarlie.photo/snapshot/" + i + ".png";
             card.className = "card";
             card.id = i.toString();
             card.appendChild(img);
