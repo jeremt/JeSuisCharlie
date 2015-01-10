@@ -17,7 +17,7 @@ function addCard(filename) {
 }
 
 function addCards() {
-    getJson("/images/" + currentId  + "/" + currentId + 9, function (data) {
+    getJson("/images/" + currentId  + "/" + parseInt(currentId + 8), function (data) {
         for (var i = 0; i < data.length; ++i) {
             addCard(data[i].filename);
         }

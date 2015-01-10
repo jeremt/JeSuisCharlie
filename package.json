@@ -16,7 +16,8 @@
     "fbgraphapi": "^0.4.11",
     "mysql": "^2.5.4",
     "qs": "^2.3.3",
-    "request": "^2.51.0"
+    "request": "^2.51.0",
+    "sqlite3": "^3.0.4"
   },
   "engines": {
     "node": "0.10.x"

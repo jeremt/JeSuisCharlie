@@ -1,6 +1,5 @@
-var mysql      = require('mysql');
 var fs         = require('fs');
-var cfg        = require('./mysql_config.json');
+var sqlite3    = require("sqlite3").verbose();
 
 /**
  * Create the photo table.
@@ -8,7 +7,8 @@ var cfg        = require('./mysql_config.json');
  * @param callback
  */
 exports.init = function (connection, callback) {
-    connection.query("CREATE TABLE jesuischarlie.photos (id INT AUTO_INCREMENT, filename VARCHAR(50), PRIMARY KEY(id))", callback);
+    connection.run("CREATE TABLE photos (ID INTEGER PRIMARY KEY AUTOINCREMENT, filename VARCHAR(50))");
+    callback();
 };
 
 /**
@@ -16,30 +16,20 @@ exports.init = function (connection, callback) {
  * @param callback
  */
 exports.reset = function (connection, callback) {
-    connection.query("DROP TABLE jesuischarlie.photos", function (err) {
-        if (err) {
-            callback(err);
-            return;
-        }
-
-        exports.init(connection, function (err) {
+    connection.run("DROP TABLE photos");
+    exports.init(connection, function () {
+        fs.readdir(__dirname + "/public/images", function (err, result) {
             if (err) {
                 callback(err);
                 return;
             }
-            fs.readdir(__dirname + "/public/images", function (err, result) {
-                if (err) {
-                    callback(err);
-                    return;
-                }
-                if (result.length) {
-                    result = result.map(function (row) {return '("' + row + '")'}).join(", ");
-                    connection.query("INSERT INTO jesuischarlie.photos (filename) VALUES " + result, callback);
-                }
-                else {
-                    callback();
-                }
-            });
+            if (result.length) {
+                result = result.map(function (row) {
+                    return '("' + row + '")'
+                }).join(", ");
+                connection.run("INSERT INTO photos (filename) VALUES " + result);
+            }
+            callback();
         });
     });
 };
@@ -51,7 +41,8 @@ exports.reset = function (connection, callback) {
  * @param callback
  */
 exports.addPhoto = function (connection, filename, callback) {
-    connection.query("INSERT INTO jesuischarlie.photos (filename) VALUES ('" + filename + "')", callback);
+    connection.run("INSERT INTO photos (filename) VALUES ('" + filename + "')");
+    callback();
 };
 
 /**
@@ -61,7 +52,8 @@ exports.addPhoto = function (connection, filename, callback) {
  * @param callback
  */
 exports.removePhoto = function (connection, filename, callback) {
-    connection.query("DELETE FROM jesuischarlie.photos WHERE filename = '" + filename + "'", callback);
+    connection.run("DELETE FROM photos WHERE filename = '" + filename + "'");
+    callback();
 };
 
 /**
@@ -72,7 +64,7 @@ exports.removePhoto = function (connection, filename, callback) {
  * @param callback
  */
 exports.getPhotos = function (connection, from, to, callback) {
-    connection.query("SELECT * FROM jesuischarlie.photos WHERE id BETWEEN " + from + " AND " + to, callback);
+    connection.all("SELECT * FROM photos WHERE id BETWEEN " + from + " AND " + to, callback);
 };
 
 /**
@@ -80,12 +72,12 @@ exports.getPhotos = function (connection, from, to, callback) {
  * @param callback
  */
 exports.connect = function (callback) {
-    var connection = mysql.createConnection({
-        host     : cfg.host,
-        user     : cfg.user,
-        password : cfg.password
-    });
-    connection.connect(function (err) {
-        callback(err, connection);
+    var file = __dirname + "/jesuischarlie.db";
+    if(!fs.existsSync(file)) {
+        fs.openSync(file, "w");
+    }
+    var db = new sqlite3.Database(file);
+    db.serialize(function() {
+        callback(null, db);
     });
 };
