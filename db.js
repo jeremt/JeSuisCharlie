@@ -7,6 +7,7 @@ var sqlite3    = require("sqlite3").verbose();
  * @param callback
  */
 exports.init = function (connection, callback) {
+    //connection.run("DROP TABLE photos");
     connection.run("CREATE TABLE photos (ID INTEGER PRIMARY KEY AUTOINCREMENT, filename VARCHAR(50))");
     callback();
 };
@@ -16,21 +17,18 @@ exports.init = function (connection, callback) {
  * @param callback
  */
 exports.reset = function (connection, callback) {
-    connection.run("DROP TABLE photos");
-    exports.init(connection, function () {
-        fs.readdir(__dirname + "/public/images", function (err, result) {
-            if (err) {
-                callback(err);
-                return;
-            }
-            if (result.length) {
-                result = result.map(function (row) {
-                    return '("' + row + '")'
-                }).join(", ");
-                connection.run("INSERT INTO photos (filename) VALUES " + result);
-            }
-            callback();
-        });
+    fs.readdir(__dirname + "/public/images", function (err, result) {
+        if (err) {
+            callback(err);
+            return;
+        }
+        if (result.length) {
+            result = result.map(function (row) {
+                return '("' + row + '")'
+            }).join(", ");
+            connection.run("INSERT INTO photos (filename) VALUES " + result);
+        }
+        callback();
     });
 };
 
