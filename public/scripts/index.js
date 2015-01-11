@@ -1,10 +1,17 @@
 
 var photobooth = new Photobooth(function () {
-    document.getElementById("box").style.display = "inline-block";
+    document.getElementById("picture-box").style.display = "inline-block";
 });
 var snapshotBtn = document.getElementById("snapshotBtn");
+var confirmBtn = document.getElementById("confirmBtn");
 
 snapshotBtn.addEventListener("click", function () {
+    document.getElementById("confirm-box").style.display = "inline-block";
+    document.getElementById("picture-box").style.display = "none";
+    document.getElementById("preview").src = photobooth.getDataUrl();
+});
+
+confirmBtn.addEventListener("click", function () {
     sendJson("/upload", {imageData: photobooth.getDataUrl()}, function (data) {
         window.location.href = "/snapshot/" + data.currentId;
     });

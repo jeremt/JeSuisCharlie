@@ -11,10 +11,17 @@
         <a href="/" class="active">Photobooth</a>
         <a href="/gallery">Gallery</a>
     </nav>
-    <div id="box" style="display: none">
+    <div id="picture-box" class="box" style="display: none">
         <canvas></canvas>
         <div>
             <button id="snapshotBtn">Take a picture</button>
+        </div>
+    </div>
+    <div id="confirm-box" class="box" style="display: none">
+        <img id="preview" src="">
+        <div>
+            <button id="confirmBtn">Upload picture</button>
+            <a href="/">Retry</a><br>
         </div>
     </div>
     <video style="display:none;"></video>

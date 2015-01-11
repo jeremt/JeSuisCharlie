@@ -38,7 +38,7 @@ nav {
     text-align: center;
 }
 
-#box, .card {
+.box, .card {
     border-radius: 5px;
     background: white;
     box-shadow: 0 0 20px black;
@@ -50,7 +50,7 @@ nav {
     margin: 0 20px 20px 0;
 }
 
-#box {
+.box {
     display: inline-block;
     padding: 20px;
 }
@@ -92,7 +92,7 @@ a:hover, button:hover {
     transform: scale(1.1);
 }
 
-#box button {
+.box button {
     text-align: center;
     width: 100%;
 }
